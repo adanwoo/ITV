@@ -1,8 +1,8 @@
 # src/demo_filter.py
-# Demo 频道筛选与排序模块，返回带分类标签的频道列表
+# Demo 频道筛选与排序模块，返回 (匹配列表, 未匹配列表)
 
 from pathlib import Path
-from typing import List, Tuple, Dict
+from typing import List, Tuple
 from src.config import DEMO_FILE
 from src.alias_matcher import get_alias_matcher
 
@@ -12,7 +12,7 @@ except ImportError:
     DEMO_MATCH_MODE = "contains"
 
 def parse_demo_order_with_categories(demo_file: Path = DEMO_FILE) -> List[Tuple[str, str]]:
-    """解析 demo.txt，返回 [(分类, 标准化频道名), ...]，按出现顺序"""
+    """解析 demo.txt，返回 [(分类, 标准化频道名), ...]"""
     if not demo_file.exists():
         print(f"⚠️ Demo 文件不存在: {demo_file}")
         return []
@@ -45,22 +45,22 @@ def match_channel_name(channel_name: str, demo_name: str) -> bool:
     else:
         return demo_name in channel_name or channel_name in demo_name
 
-def filter_and_order_by_demo(channels: list, alias_matcher=None) -> Tuple[List[dict], Dict[str, list]]:
+def filter_and_order_by_demo(channels: list, alias_matcher=None) -> Tuple[List[dict], List[dict]]:
     """
     根据 demo.txt 筛选并排序频道。
-    返回 (ordered_channels, category_map)
-    ordered_channels: 按 demo 顺序排列的频道字典列表（每个字典增加 'demo_category' 字段）
-    category_map: 分类名 -> 该分类下的频道列表（用于输出统计）
+    返回 (ordered_channels, excluded_channels)
+    ordered_channels: 按 demo 顺序排列的频道列表（每个频道增加 'demo_category' 字段）
+    excluded_channels: 未匹配上的频道列表（原样返回）
     """
     demo_order = parse_demo_order_with_categories()
     if not demo_order:
         print("⚠️ demo.txt 为空，跳过筛选")
-        return channels, {}
+        return channels, []
 
     # 建立频道名到频道的映射（标准化后的名称）
     name_to_channel = {ch["name"]: ch for ch in channels}
     matched = []
-    category_map = {}
+    excluded = []
     matched_names = set()
 
     for category, demo_name in demo_order:
@@ -71,7 +71,6 @@ def filter_and_order_by_demo(channels: list, alias_matcher=None) -> Tuple[List[d
             if ch["name"] not in matched_names:
                 matched.append(ch)
                 matched_names.add(ch["name"])
-                category_map.setdefault(category, []).append(ch)
                 continue
         # 模糊匹配
         for ch in channels:
@@ -82,8 +81,12 @@ def filter_and_order_by_demo(channels: list, alias_matcher=None) -> Tuple[List[d
                 ch_copy["demo_category"] = category
                 matched.append(ch_copy)
                 matched_names.add(ch["name"])
-                category_map.setdefault(category, []).append(ch_copy)
                 break
 
-    print(f"🎯 Demo 筛选：原始 {len(channels)} 个频道 -> 匹配 {len(matched)} 个频道（按 demo 顺序，匹配模式: {DEMO_MATCH_MODE}）")
-    return matched, category_map
+    # 未匹配的频道
+    for ch in channels:
+        if ch["name"] not in matched_names:
+            excluded.append(ch)
+
+    print(f"🎯 Demo 筛选：原始 {len(channels)} 个频道 -> 匹配 {len(matched)} 个频道，剔除 {len(excluded)} 个频道（匹配模式: {DEMO_MATCH_MODE}）")
+    return matched, excluded
