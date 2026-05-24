@@ -1,15 +1,17 @@
 # src/demo_filter.py
-# Demo 频道筛选与排序模块，支持精确匹配和包含匹配
+# Demo 频道筛选与排序模块
 
 import re
 from pathlib import Path
 from typing import List, Tuple
 from src.config import DEMO_FILE
 from src.alias_matcher import get_alias_matcher
-from src.config import DEMO_MATCH_MODE
 
-# 匹配模式：'exact' 要求完全一致，'contains' 允许包含关系
-DEMO_MATCH_MODE = 'contains'   # 可修改为 'exact'
+# 尝试从 config 导入匹配模式，若失败则使用默认值
+try:
+    from src.config import DEMO_MATCH_MODE
+except ImportError:
+    DEMO_MATCH_MODE = "contains"
 
 def parse_demo_order(demo_file: Path = DEMO_FILE) -> List[Tuple[str, str]]:
     """解析 demo.txt，返回 [(分类, 标准化频道名), ...]"""
@@ -40,34 +42,33 @@ def parse_demo_order(demo_file: Path = DEMO_FILE) -> List[Tuple[str, str]]:
     return order
 
 def match_channel_name(channel_name: str, demo_name: str) -> bool:
-    """判断频道名是否匹配 demo 中的名称"""
-    if DEMO_MATCH_MODE == 'exact':
+    """根据模式判断是否匹配"""
+    if DEMO_MATCH_MODE == "exact":
         return channel_name == demo_name
     else:
-        # 包含匹配：demo_name 是 channel_name 的子串，或者反过来
+        # 包含匹配
         return demo_name in channel_name or channel_name in demo_name
 
 def filter_and_order_by_demo(channels: list, alias_matcher=None) -> list:
-    """根据 demo.txt 筛选并排序频道，返回按 demo 顺序排列的频道列表"""
+    """根据 demo.txt 筛选并排序频道"""
     demo_order = parse_demo_order()
     if not demo_order:
         print("⚠️ demo.txt 为空，跳过筛选")
         return channels
-    
-    # 建立频道名到频道对象的映射（注意：频道名已经过别名标准化）
+
     name_to_channel = {ch["name"]: ch for ch in channels}
     matched = []
     matched_names = set()
-    
+
     for category, demo_name in demo_order:
-        # 先尝试精确匹配
+        # 精确匹配优先
         if demo_name in name_to_channel:
             ch = name_to_channel[demo_name]
             if ch["name"] not in matched_names:
                 matched.append(ch)
                 matched_names.add(ch["name"])
                 continue
-        # 再尝试模糊匹配（遍历所有频道）
+        # 模糊匹配
         for ch in channels:
             if ch["name"] in matched_names:
                 continue
@@ -75,6 +76,6 @@ def filter_and_order_by_demo(channels: list, alias_matcher=None) -> list:
                 matched.append(ch)
                 matched_names.add(ch["name"])
                 break
-    
+
     print(f"🎯 Demo 筛选：原始 {len(channels)} 个频道 -> 匹配 {len(matched)} 个频道（匹配模式: {DEMO_MATCH_MODE}）")
     return matched
