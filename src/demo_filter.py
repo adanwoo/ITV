@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import List, Tuple
 from src.config import DEMO_FILE
 from src.alias_matcher import get_alias_matcher
+from src.config import DEMO_MATCH_MODE
 
 # 匹配模式：'exact' 要求完全一致，'contains' 允许包含关系
 DEMO_MATCH_MODE = 'contains'   # 可修改为 'exact'
