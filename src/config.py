@@ -93,3 +93,6 @@ PREFER_LOCAL_ISP = True          # 是否优先选择同运营商源（需要 IP
 ENABLE_DEMO_FILTER = os.getenv("ENABLE_DEMO_FILTER", "true").lower() == "true"
 ENABLE_ALIAS = os.getenv("ENABLE_ALIAS", "true").lower() == "true"
 ENABLE_BLACKLIST = os.getenv("ENABLE_BLACKLIST", "true").lower() == "true"
+
+# demo 匹配模式: 'exact' 或 'contains'
+DEMO_MATCH_MODE = 'contains'   # 由 demo_filter.py 使用
