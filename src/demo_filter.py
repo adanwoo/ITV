@@ -1,12 +1,12 @@
 # src/demo_filter.py
-# Demo 频道筛选与排序模块，支持包含匹配，输出未匹配频道
+# Demo 频道筛选与排序模块，使用包含匹配，输出未匹配频道到 shai.txt
 
 from pathlib import Path
 from typing import List, Tuple
 from src.config import DEMO_FILE, OUTPUT_DIR
 from src.alias_matcher import get_alias_matcher
 
-# 匹配模式：'exact' 或 'contains'（推荐 contains）
+# 强制使用包含匹配
 DEMO_MATCH_MODE = "contains"
 
 def parse_demo_order_with_categories(demo_file: Path = DEMO_FILE) -> List[Tuple[str, str]]:
@@ -38,21 +38,16 @@ def parse_demo_order_with_categories(demo_file: Path = DEMO_FILE) -> List[Tuple[
     return order
 
 def match_channel_name(channel_name: str, demo_name: str) -> bool:
-    """包含匹配：只要 demo_name 是 channel_name 的子串或反之即可"""
-    if DEMO_MATCH_MODE == "exact":
-        return channel_name == demo_name
-    else:
-        # 忽略大小写进行包含匹配
-        cn_lower = channel_name.lower()
-        dn_lower = demo_name.lower()
-        return dn_lower in cn_lower or cn_lower in dn_lower
+    """包含匹配：忽略大小写，demo_name 是 channel_name 的子串或反之"""
+    cn_lower = channel_name.lower()
+    dn_lower = demo_name.lower()
+    return dn_lower in cn_lower or cn_lower in dn_lower
 
 def filter_and_order_by_demo(channels: list) -> tuple:
     """
-    根据 demo.txt 筛选并排序频道。
     返回 (matched_channels, unmatched_channels)
     matched_channels: 按 demo 顺序排列，每个频道增加 'demo_category' 字段
-    unmatched_channels: 未匹配的频道列表
+    unmatched_channels: 未匹配的频道列表（用于生成 shai.txt）
     """
     demo_order = parse_demo_order_with_categories()
     if not demo_order:
@@ -75,10 +70,12 @@ def filter_and_order_by_demo(channels: list) -> tuple:
                 matched.append(ch)
                 matched_names.add(ch["name"])
                 matched_demo_items.add(demo_name)
+                # 从未匹配列表中移除
+                unmatched = [c for c in unmatched if c["name"] != ch["name"]]
                 continue
         # 包含匹配（遍历未匹配的频道）
         found = False
-        for ch in unmatched[:]:  # 遍历副本
+        for i, ch in enumerate(unmatched[:]):
             if ch["name"] in matched_names:
                 continue
             if match_channel_name(ch["name"], demo_name):
@@ -88,11 +85,11 @@ def filter_and_order_by_demo(channels: list) -> tuple:
                 matched_names.add(ch["name"])
                 matched_demo_items.add(demo_name)
                 # 从未匹配列表中移除
-                unmatched = [c for c in unmatched if c["name"] != ch["name"]]
+                unmatched.pop(i)
                 found = True
                 break
         if not found:
-            # 可记录未匹配的 demo 项
+            # 可选：记录未匹配的 demo 项
             pass
 
     print(f"🎯 Demo 筛选：原始 {len(channels)} 个频道 -> 匹配 {len(matched)} 个频道，未匹配 {len(unmatched)} 个（匹配模式: {DEMO_MATCH_MODE}）")
@@ -102,7 +99,7 @@ def filter_and_order_by_demo(channels: list) -> tuple:
     matched_demo_set = matched_demo_items
     unmatched_demo = demo_names_set - matched_demo_set
     if unmatched_demo:
-        print(f"⚠️ 以下 demo 频道未匹配到任何采集频道（前20个）: {list(unmatched_demo)[:20]}")
+        print(f"⚠️ 以下 demo 频道未匹配到任何采集频道（前30个）: {list(unmatched_demo)[:30]}")
     
     return matched, unmatched
 
