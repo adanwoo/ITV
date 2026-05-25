@@ -13,7 +13,7 @@ from src.config import (
     ENABLE_IP_RESOLVE, ENABLE_DEMO_FILTER, ENABLE_ALIAS, ENABLE_BLACKLIST,
     DATABASE_ENABLE, CACHE_EXPIRY_SECONDS, DATABASE_TABLE
 )
-from src.fetcher import fetch_all_sources, check_sources_changed
+from src.fetcher import fetch_all_sources
 from src.parser import parse_and_dedupe
 from src.speed_tester import test_channels_concurrent
 from src.ffmpeg_validator import validate_batch, cleanup as ffmpeg_cleanup
@@ -57,7 +57,7 @@ def filter_by_region(channels):
     return filtered
 
 async def load_from_cache(db) -> list:
-    """从数据库加载所有有效的频道源"""
+    """从数据库加载所有有效的频道源（每条记录一个源）"""
     if not db._conn:
         return []
     table = f"{DATABASE_TABLE}_speed"
@@ -101,71 +101,43 @@ async def main():
 
     db = await get_db_cache()
 
-    # 先检测源是否有变化
-    print("\n🔍 检测源更新状态...")
-    changed_urls, unchanged_urls, _ = await check_sources_changed(IPTV_SOURCES)
-    
+    # 判断缓存是否有效（仅用于决定是否跳过完整采集，但增量检测仍会执行）
     use_cache = False
-    if not changed_urls and DATABASE_ENABLE:
-        # 所有源都无变化，使用缓存
+    if DATABASE_ENABLE:
         last_update = await db.get_last_update_time()
         if last_update is not None:
             age = int(time.time()) - last_update
             if age < CACHE_EXPIRY_SECONDS:
                 use_cache = True
-                print(f"✅ 所有源无变化，且数据库缓存有效（剩余 {CACHE_EXPIRY_SECONDS - age} 秒），将使用缓存数据")
+                print(f"✅ 数据库缓存有效（剩余 {CACHE_EXPIRY_SECONDS - age} 秒），将使用增量检测模式")
             else:
-                print(f"⏰ 数据库缓存已过期，需要重新采集")
+                print(f"⏰ 数据库缓存已过期（超过 {CACHE_EXPIRY_SECONDS // 3600} 小时），将重新采集")
         else:
             print("📦 数据库为空，将执行完整采集")
-    else:
-        print(f"🔄 检测到 {len(changed_urls)} 个源有变化，需要更新")
-        if unchanged_urls:
-            print(f"   {len(unchanged_urls)} 个源无变化，将使用缓存")
 
-    if use_cache:
-        cached_sources = await load_from_cache(db)
-        if not cached_sources:
-            print("⚠️ 缓存无数据，回退到完整采集")
-            use_cache = False
-        else:
-            # 只对有变化的源进行重新拉取和测速
-            if changed_urls:
-                print(f"📥 仅更新 {len(changed_urls)} 个变化的源...")
-                raw_contents = await fetch_all_sources(IPTV_SOURCES, force_refresh=True)
-                new_channels_dict = parse_and_dedupe({url: raw_contents[url] for url in changed_urls if raw_contents.get(url)})
-                if new_channels_dict:
-                    new_valid = await test_channels_concurrent(new_channels_dict)
-                    new_valid = await validate_batch(new_valid)
-                    # 合并新旧数据
-                    all_valid = cached_sources + new_valid
-                    await save_to_cache(db, all_valid)
-                    await db.set_last_update_time()
-                    cached_sources = all_valid
-            merged_channels = merge_channels_by_name(cached_sources)
-            print(f"📊 从缓存合并后得到 {len(merged_channels)} 个频道")
-    else:
-        print("\n📥 执行完整采集流程...")
-        raw_contents = await fetch_all_sources(IPTV_SOURCES, force_refresh=True)
-        channels_dict = parse_and_dedupe(raw_contents)
-        if not channels_dict:
-            print("❌ 未获取到任何频道，请检查网络或源地址")
-            return 1
+    # 增量拉取（内部会自动判断哪些源需要更新）
+    print("\n📥 执行增量源检测和拉取...")
+    raw_contents = await fetch_all_sources(IPTV_SOURCES, incremental=True)
+    channels_dict = parse_and_dedupe(raw_contents)
+    if not channels_dict:
+        print("❌ 未获取到任何频道，请检查网络或源地址")
+        return 1
 
-        print(f"📊 原始频道数（去重后）: {len(channels_dict)}")
+    print(f"📊 原始频道数（去重后）: {len(channels_dict)}")
 
-        valid_channels = await test_channels_concurrent(channels_dict)
-        print(f"📊 通过HTTP测速的频道数: {len(valid_channels)}")
+    # 测速时，尝试从缓存读取结果，减少重复工作
+    valid_channels = await test_channels_concurrent(channels_dict)
+    print(f"📊 通过HTTP测速的频道数: {len(valid_channels)}")
 
-        valid_channels = await validate_batch(valid_channels)
-        print(f"📊 通过ffmpeg深度验证的频道数: {len(valid_channels)}")
+    valid_channels = await validate_batch(valid_channels)
+    print(f"📊 通过ffmpeg深度验证的频道数: {len(valid_channels)}")
 
-        if DATABASE_ENABLE:
-            await save_to_cache(db, valid_channels)
-            await db.set_last_update_time()
+    if DATABASE_ENABLE:
+        await save_to_cache(db, valid_channels)
+        await db.set_last_update_time()
 
-        merged_channels = merge_channels_by_name(valid_channels)
-        print(f"📊 合并后的频道数: {len(merged_channels)}")
+    merged_channels = merge_channels_by_name(valid_channels)
+    print(f"📊 合并后的频道数: {len(merged_channels)}")
 
     # 后续统一过滤
     if ENABLE_BLACKLIST:
@@ -176,21 +148,22 @@ async def main():
 
     if ENABLE_DEMO_FILTER:
         before = len(merged_channels)
-        ordered_channels, category_map = filter_and_order_by_demo(merged_channels)
+        # filter_and_order_by_demo 返回 (ordered_channels, unmatched)，unmatched 内部已写入 shai.txt
+        ordered_channels, _ = filter_and_order_by_demo(merged_channels)
         print(f"📊 Demo筛选后: {len(ordered_channels)} (减少 {before - len(ordered_channels)})")
         if not ordered_channels:
             print("❌ Demo 筛选后无频道，尝试不筛选")
             ordered_channels = merged_channels
     else:
         ordered_channels = merged_channels
-        category_map = {}
 
     ordered_channels = filter_by_region(ordered_channels)
     if not ordered_channels:
         print("❌ 过滤后无有效频道")
         return 1
 
-    generate_outputs_from_demo(ordered_channels, category_map)
+    # 输出：直接使用 demo 顺序（ordered_channels 已包含 demo_category）
+    generate_outputs_from_demo(ordered_channels)
 
     total = len(ordered_channels)
     print(f"🎉 完成！有效频道总数: {total}")
