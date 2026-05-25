@@ -84,3 +84,6 @@ ENABLE_BLACKLIST = os.getenv("ENABLE_BLACKLIST", "true").lower() == "true"
 
 # ==================== Demo 匹配模式 ====================
 DEMO_MATCH_MODE = "exact"   # 可选 "exact" 或 "contains"
+
+# 缓存有效期（秒），用于判断数据库中的测速结果是否过期
+CACHE_EXPIRY_SECONDS = 7 * 24 * 3600   # 7天
