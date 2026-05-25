@@ -17,7 +17,6 @@ def generate_outputs_from_demo(ordered_channels: list, category_map: dict = None
     """
     按照 demo 顺序输出 M3U 和 TXT。
     ordered_channels: 已按 demo 顺序排列的频道列表，每个频道应有 'demo_category' 字段。
-    category_map: 可选，用于统计（暂未使用）。
     """
     if not ordered_channels:
         print("⚠️ 没有频道可输出")
