@@ -21,18 +21,21 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle
+      - name: Download Gradle 8.5
         run: |
-          sudo apt-get update
-          sudo apt-get install -y gradle
+          wget https://services.gradle.org/distributions/gradle-8.5-bin.zip
+          unzip -q gradle-8.5-bin.zip
+          echo "GRADLE_HOME=$PWD/gradle-8.5" >> $GITHUB_ENV
+          echo "$PWD/gradle-8.5/bin" >> $GITHUB_PATH
+
+      - name: Verify Gradle version
+        run: gradle --version
 
       - name: Build APK
         run: |
           cd android
-          # 动态生成 M3U_URL
           M3U_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/tv.m3u"
           echo "Using M3U_URL: $M3U_URL"
-          # 通过 gradle 属性传递
           gradle assembleRelease -PM3U_URL="$M3U_URL"
 
       - name: Upload APK
