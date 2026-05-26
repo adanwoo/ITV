@@ -23,7 +23,7 @@ class AliasMatcher:
                 line = line.strip()
                 if not line or line.startswith('#'):
                     continue
-                # 优先逗号分隔
+                # 支持逗号和冒号分隔
                 if ',' in line:
                     parts = [p.strip() for p in line.split(',')]
                 elif ':' in line and not line.startswith('re:'):
@@ -33,7 +33,6 @@ class AliasMatcher:
                     print(f"⚠️ 别名文件第 {line_num} 行格式错误，跳过: {line}")
                     continue
                 if len(parts) < 2:
-                    print(f"⚠️ 别名文件第 {line_num} 行缺少别名，跳过: {line}")
                     continue
                 standard = parts[0].strip()
                 aliases = parts[1:]
@@ -57,8 +56,10 @@ class AliasMatcher:
         if not channel_name:
             return None
         name_lower = channel_name.lower()
+        # 精确匹配（最高优先级）
         if name_lower in self.exact_mappings:
             return self.exact_mappings[name_lower]
+        # 正则匹配
         for pattern, standard in self.regex_mappings.items():
             if pattern.search(channel_name):
                 return standard
