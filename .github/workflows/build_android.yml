@@ -21,15 +21,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Download Gradle 8.5
+      - name: Install Gradle 8.5
         run: |
           wget https://services.gradle.org/distributions/gradle-8.5-bin.zip
-          unzip -q gradle-8.5-bin.zip
-          echo "GRADLE_HOME=$PWD/gradle-8.5" >> $GITHUB_ENV
+          unzip gradle-8.5-bin.zip
           echo "$PWD/gradle-8.5/bin" >> $GITHUB_PATH
-
-      - name: Verify Gradle version
-        run: gradle --version
 
       - name: Build APK
         run: |
