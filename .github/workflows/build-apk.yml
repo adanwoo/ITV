@@ -2,60 +2,71 @@ name: Build and Release APK
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
-  workflow_dispatch:
+    - cron: '0 */6 * * *'      # 每6小时自动构建
+  workflow_dispatch:            # 支持手动触发
+
+permissions:
+  contents: write               # 必须：允许创建 Release
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: 检出代码
+        uses: actions/checkout@v4
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '17'
+      - name: 设置 JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
+      - name: 设置 Android SDK
+        uses: android-actions/setup-android@v3
 
-    - name: Download gradle-wrapper.jar
-      run: |
-        mkdir -p app/gradle/wrapper
-        curl -L -o app/gradle/wrapper/gradle-wrapper.jar https://repo1.maven.org/maven2/org/gradle/gradle-wrapper/8.5/gradle-wrapper-8.5.jar
+      - name: 准备 Gradle Wrapper（如果缺失）
+        run: |
+          cd app
+          # 如果 gradle-wrapper.jar 不存在，则下载
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+            mkdir -p gradle/wrapper
+            curl -L -o gradle/wrapper/gradle-wrapper.jar \
+              https://repo1.maven.org/maven2/org/gradle/gradle-wrapper/8.5/gradle-wrapper-8.5.jar
+          fi
+          chmod +x gradlew
 
-    - name: Create gradlew scripts
-      run: |
-        cat > app/gradlew << 'EOF'
-        #!/bin/sh
-        # 复制上面提供的 gradlew 完整内容
-        EOF
-        cat > app/gradlew.bat << 'EOF'
-        @rem 复制上面提供的 gradlew.bat 完整内容
-        EOF
-        chmod +x app/gradlew
+      - name: 构建 Release APK
+        run: |
+          cd app
+          ./gradlew assembleRelease
 
-    - name: Build APK
-      run: |
-        cd app
-        ./gradlew assembleRelease
+      - name: 查找生成的 APK 文件
+        id: find_apk
+        run: |
+          cd app
+          # 搜索所有 apk 文件，取第一个
+          APK_PATH=$(find . -name "*.apk" -type f | head -n 1)
+          if [ -z "$APK_PATH" ]; then
+            echo "❌ 未找到 APK 文件！"
+            exit 1
+          fi
+          echo "apk_path=$APK_PATH" >> $GITHUB_OUTPUT
+          echo "✅ 找到 APK: $APK_PATH"
 
-    - name: Upload APK as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: iptv-player-apk
-        path: app/app/build/outputs/apk/release/*.apk
-        retention-days: 7
+      - name: 上传 APK 作为工件
+        uses: actions/upload-artifact@v4
+        with:
+          name: iptv-player-apk
+          path: ${{ steps.find_apk.outputs.apk_path }}
+          if-no-files-found: error
 
-    - name: Create Release
-      if: github.event_name == 'workflow_dispatch'
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: "v1.0.${{ github.run_number }}"
-        name: "IPTV Player v1.0.${{ github.run_number }}"
-        body: "自动构建的 IPTV 播放器 APK，节目单已打包在内。"
-        files: app/app/build/outputs/apk/release/*.apk
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 创建 GitHub Release
+        if: github.event_name == 'workflow_dispatch'   # 仅手动触发时创建 Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "v1.0.${{ github.run_number }}"
+          name: "IPTV Player v1.0.${{ github.run_number }}"
+          body: "自动构建的 IPTV 播放器 APK，节目单已打包在内。"
+          files: ${{ steps.find_apk.outputs.apk_path }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
