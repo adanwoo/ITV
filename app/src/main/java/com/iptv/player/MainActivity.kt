@@ -2,6 +2,7 @@ package com.iptv.player
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -42,12 +43,10 @@ class MainActivity : AppCompatActivity() {
 
         channelList.layoutManager = LinearLayoutManager(this)
 
-        // 获取播放列表地址
         val baseUrl = BuildConfig.BASE_URL
         val m3uUrl = if (baseUrl.endsWith("/")) baseUrl + "tv.m3u" else baseUrl + "/tv.m3u"
         val txtUrl = if (baseUrl.endsWith("/")) baseUrl + "tv.txt" else baseUrl + "/tv.txt"
         
-        // 优先加载 M3U，失败则加载 TXT
         loadPlaylist(m3uUrl, true) { success ->
             if (!success) {
                 loadPlaylist(txtUrl, false) { txtSuccess ->
@@ -179,14 +178,14 @@ class MainActivity : AppCompatActivity() {
         exoPlayer = SimpleExoPlayer.Builder(this).setTrackSelector(trackSelector).build()
         playerView.player = exoPlayer
 
-        val mediaSource = HlsMediaSource.Factory(DefaultHttpDataSource.Factory())
+        val dataSourceFactory = DefaultHttpDataSource.Factory()
+        val mediaSource = HlsMediaSource.Factory(dataSourceFactory)
             .createMediaSource(MediaItem.fromUri(url))
         exoPlayer?.setMediaSource(mediaSource)
         exoPlayer?.prepare()
         exoPlayer?.playWhenReady = true
         
-        // 显示当前播放的频道
-        Toast.makeText(this, "正在播放: $url", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "正在播放: ${url.substringAfterLast("/")}", Toast.LENGTH_SHORT).show()
     }
 
     private fun releasePlayer() {
