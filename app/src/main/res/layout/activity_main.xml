@@ -22,11 +22,12 @@
 
     <TextView
         android:id="@+id/error_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FF0000"
         android:visibility="gone"
-        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="16dp"
         android:text="加载失败" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -35,5 +36,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.8"
         android:background="#1E1E1E" />
+
+</LinearLayout>        android:background="#1E1E1E" />
 
 </LinearLayout>
