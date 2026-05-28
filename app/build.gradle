@@ -14,8 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-        def baseUrl = project.findProperty("baseUrl") ?: "https://YOUR_USERNAME.github.io/YOUR_REPO/"
-        buildConfigField "String", "BASE_URL", "\"$baseUrl\""
+        // 关键修改：硬编码您的M3U8播放列表地址
+        buildConfigField "String", "BASE_URL", "\"https://itv.19860519.xyz/output/tv.m3u\""
     }
 
     buildTypes {
@@ -46,7 +46,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.leanback:leanback:1.0.0'
     implementation 'androidx.tvprovider:tvprovider:1.0.0'
-    implementation 'com.github.bumptech.glide:glide:4.16.0'
     implementation 'com.squareup.okhttp3:okhttp:4.12.0'
     implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
     implementation 'com.google.android.exoplayer:exoplayer-hls:2.19.1'
