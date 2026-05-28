@@ -6,7 +6,7 @@ on:
     branches: [ main, master ]
 
 permissions:
-  contents: read
+  contents: write   # 允许创建 Release
 
 jobs:
   build:
@@ -33,7 +33,6 @@ jobs:
             unzip -q gradle-8.3-bin.zip
             echo "$(pwd)/gradle-8.3/bin" >> $GITHUB_PATH
           fi
-          gradle --version
 
       - name: Create local.properties
         run: echo "sdk.dir=$ANDROID_HOME" > local.properties
@@ -46,7 +45,7 @@ jobs:
           BASE_URL="https://$OWNER.github.io/$REPO_NAME/"
           echo "base_url=$BASE_URL" >> $GITHUB_OUTPUT
 
-      - name: Build APK (debug)
+      - name: Build Debug APK
         run: gradle assembleDebug -PbaseUrl=${{ steps.pages-url.outputs.base_url }}
 
       - name: Upload APK as artifact
@@ -54,3 +53,18 @@ jobs:
         with:
           name: iptv-player-apk
           path: app/build/outputs/apk/debug/*.apk
+
+      - name: Get version name
+        id: version
+        run: echo "tag=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: app-${{ steps.version.outputs.tag }}
+          name: IPTV Player APK ${{ steps.version.outputs.tag }}
+          files: app/build/outputs/apk/debug/*.apk
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
