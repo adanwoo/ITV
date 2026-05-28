@@ -1,94 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#0A0A0A">
+    android:keepScreenOn="true">
 
-    <FrameLayout
-        android:id="@+id/video_container"
+    <!-- 全屏播放器 -->
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:background="#000000">
+        android:layout_height="match_parent"
+        app:resize_mode="fit"
+        app:use_controller="true"
+        app:controller_auto_show="true"
+        app:surface_type="surface_view" />
 
-        <com.google.android.exoplayer2.ui.PlayerView
-            android:id="@+id/player_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:resize_mode="fit"
-            app:use_controller="true"
-            app:show_buffering="when_playing" />
+    <!-- 半透明遮罩，用于聚焦时显示 -->
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone" />
 
-        <ImageButton
-            android:id="@+id/fullscreen_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="top|end"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_fullscreen"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:alpha="0.8" />
-
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/current_channel_name"
+    <!-- 底部频道列表抽屉（触屏向上滑动） -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/drawer_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="未播放"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:padding="12dp"
-        android:background="#1A1A1A"
-        android:gravity="center_vertical"
-        android:drawableStart="@drawable/ic_play_indicator"
-        android:drawablePadding="8dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
-        android:orientation="vertical"
-        android:background="#1E1E1E">
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="16dp"
+        android:translationY="0dp"
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="#2D2D2D"
-            android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:elevation="4dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_drawer">
 
+            <!-- 拖动把手 -->
+            <ImageView
+                android:id="@+id/drawer_handle"
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/btn_drawer_handle"
+                android:contentDescription="拖动把手" />
+
+            <!-- 标题栏 -->
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="频道列表"
+                android:text="📺 频道列表"
+                android:textSize="18sp"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="8dp"
+                android:fontFamily="sans-serif-medium" />
 
-            <TextView
-                android:id="@+id/channel_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0个频道"
-                android:textColor="#888888"
-                android:textSize="12sp" />
+            <!-- 频道列表 RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/channel_list"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:paddingBottom="16dp"
+                android:clipToPadding="false"
+                android:scrollbars="vertical" />
 
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/channel_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp"
-            android:clipToPadding="false"
-            android:scrollbars="vertical" />
+    <!-- 加载进度指示器 -->
+    <ProgressBar
+        android:id="@+id/loading_spinner"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:indeterminateTint="#FFFFFF" />
 
-    </LinearLayout>
+    <!-- 错误信息显示 -->
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#FF0000"
+        android:background="#AA000000"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:text="加载失败" />
 
-</LinearLayout>
+</FrameLayout>
