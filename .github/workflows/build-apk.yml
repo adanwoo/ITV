@@ -2,8 +2,8 @@ name: Build and Release APK
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # 每6小时运行一次
-  workflow_dispatch:         # 手动触发
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,8 +21,21 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x app/gradlew
+    - name: Download gradle-wrapper.jar
+      run: |
+        mkdir -p app/gradle/wrapper
+        curl -L -o app/gradle/wrapper/gradle-wrapper.jar https://repo1.maven.org/maven2/org/gradle/gradle-wrapper/8.5/gradle-wrapper-8.5.jar
+
+    - name: Create gradlew scripts
+      run: |
+        cat > app/gradlew << 'EOF'
+        #!/bin/sh
+        # 复制上面提供的 gradlew 完整内容
+        EOF
+        cat > app/gradlew.bat << 'EOF'
+        @rem 复制上面提供的 gradlew.bat 完整内容
+        EOF
+        chmod +x app/gradlew
 
     - name: Build APK
       run: |
