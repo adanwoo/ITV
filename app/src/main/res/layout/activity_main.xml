@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:background="#0A0A0A">
 
-    <!-- 视频播放器区域 - 全屏模式 -->
     <FrameLayout
         android:id="@+id/video_container"
         android:layout_width="match_parent"
@@ -19,25 +18,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:resize_mode="fit"
-            app:show_buffering="when_playing"
             app:use_controller="true"
-            app:controller_auto_show="true"
-            app:player_layout_id="@layout/exo_player_control_view" />
+            app:show_buffering="when_playing" />
 
-        <!-- 全屏按钮（覆盖层） -->
         <ImageButton
             android:id="@+id/fullscreen_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="top|end"
             android:layout_margin="16dp"
-            android:background="@drawable/fullscreen_icon"
-            android:alpha="0.7"
-            android:visibility="visible" />
+            android:src="@drawable/ic_fullscreen"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:alpha="0.8" />
 
     </FrameLayout>
 
-    <!-- 当前播放频道名称 -->
     <TextView
         android:id="@+id/current_channel_name"
         android:layout_width="match_parent"
@@ -45,14 +40,12 @@
         android:text="未播放"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        android:textStyle="bold"
         android:padding="12dp"
         android:background="#1A1A1A"
         android:gravity="center_vertical"
-        android:drawableStart="@drawable/ic_playing"
+        android:drawableStart="@drawable/ic_play_indicator"
         android:drawablePadding="8dp" />
 
-    <!-- 频道列表区域 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -60,7 +53,6 @@
         android:orientation="vertical"
         android:background="#1E1E1E">
 
-        <!-- 列表标题栏 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -89,7 +81,6 @@
 
         </LinearLayout>
 
-        <!-- 频道列表 RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/channel_list"
             android:layout_width="match_parent"
