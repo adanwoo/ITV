@@ -2,6 +2,9 @@ package com.iptv.player
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -17,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var errorText: TextView
     private lateinit var groupSpinner: Spinner
-    
+
     private val allChannels = mutableListOf<Channel>()
     private var currentChannels = listOf<Channel>()
     private var groups = listOf("全部")
@@ -26,45 +29,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+
         recyclerView = findViewById(R.id.recyclerView)
         progressBar = findViewById(R.id.progressBar)
         errorText = findViewById(R.id.errorText)
         groupSpinner = findViewById(R.id.groupSpinner)
-        
+
         recyclerView.layoutManager = LinearLayoutManager(this)
-        
-        setupSettingsButton()
+        supportActionBar?.title = "IPTV Player"
+
         loadChannels()
     }
-    
-    private fun setupSettingsButton() {
-        // 通过 toolbar 或 actionbar 添加设置按钮，这里简化：长按标题触发
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        supportActionBar?.title = "IPTV Player"
-    }
-    
-    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressedDispatcher.onBackPressed()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-    
-    override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
-    
-    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_settings) {
             startActivity(Intent(this, SettingsActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)
     }
-    
+
     private fun loadChannels() {
         progressBar.visibility = View.VISIBLE
         errorText.visibility = View.GONE
@@ -86,7 +75,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    
+
     private fun updateGroupList() {
         val groupSet = mutableSetOf<String>()
         for (ch in allChannels) {
@@ -102,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         }
         filterChannelsByGroup("全部")
     }
-    
+
     private fun filterChannelsByGroup(group: String) {
         currentChannels = if (group == "全部") {
             allChannels.toList()
