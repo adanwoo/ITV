@@ -3,7 +3,6 @@ package com.iptv.player
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.GestureDetector
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -26,7 +25,6 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var playerView: PlayerView
     private lateinit var exoPlayer: ExoPlayer
     private lateinit var channelListFragment: ChannelListFragment
-    private lateinit var gestureDetector: GestureDetector
 
     private lateinit var topBar: View
     private lateinit var channelNameText: TextView
@@ -39,6 +37,10 @@ class PlayerActivity : AppCompatActivity() {
     private var currentChannel: Channel? = null
     private var currentPosition = 0
 
+    // 滑动检测变量
+    private var touchStartY = 0f
+    private val SWIPE_THRESHOLD = 100f
+
     companion object {
         private const val CONTROLS_HIDE_DELAY = 3000L
     }
@@ -50,8 +52,8 @@ class PlayerActivity : AppCompatActivity() {
         initViews()
         initPlayer()
         initChannelList()
-        initGestureDetector()
         setupControls()
+        setupTouchListener()
 
         if (DataManager.allChannels.isNotEmpty()) {
             currentPosition = 0
@@ -82,12 +84,8 @@ class PlayerActivity : AppCompatActivity() {
         playerView.player = exoPlayer
 
         exoPlayer.addListener(object : Player.Listener {
-            override fun onPlaybackStateChanged(playbackState: Int) {
-                // 可选处理缓冲状态
-            }
-
             override fun onPlayerError(error: PlaybackException) {
-                Toast.makeText(this@PlayerActivity, "播放失败，尝试切换线路", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@PlayerActivity, "播放失败，尝试下一个频道", Toast.LENGTH_SHORT).show()
                 nextChannel()
             }
         })
@@ -107,33 +105,6 @@ class PlayerActivity : AppCompatActivity() {
         channelListFragment.hide()
     }
 
-    private fun initGestureDetector() {
-        gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
-            override fun onScroll(
-                e1: MotionEvent,
-                e2: MotionEvent,
-                distanceX: Float,
-                distanceY: Float
-            ): Boolean {
-                val diffY = e1.y - e2.y
-                if (Math.abs(diffY) > 100) {
-                    if (diffY > 0) {
-                        previousChannel()
-                    } else {
-                        nextChannel()
-                    }
-                    return true
-                }
-                return super.onScroll(e1, e2, distanceX, distanceY)
-            }
-
-            override fun onSingleTapUp(e: MotionEvent): Boolean {
-                toggleControls()
-                return true
-            }
-        })
-    }
-
     private fun setupControls() {
         prevButton.setOnClickListener {
             previousChannel()
@@ -148,6 +119,37 @@ class PlayerActivity : AppCompatActivity() {
         listButton.setOnClickListener {
             toggleChannelList()
             resetControlsHideTimer()
+        }
+
+        // 点击视频区域显示/隐藏控制栏
+        playerView.setOnClickListener {
+            toggleControls()
+        }
+    }
+
+    private fun setupTouchListener() {
+        playerView.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    touchStartY = event.y
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    val diffY = touchStartY - event.y
+                    if (Math.abs(diffY) > SWIPE_THRESHOLD) {
+                        if (diffY > 0) {
+                            // 向上滑动 -> 上一个频道
+                            previousChannel()
+                        } else {
+                            // 向下滑动 -> 下一个频道
+                            nextChannel()
+                        }
+                        resetControlsHideTimer()
+                    }
+                    true
+                }
+                else -> false
+            }
         }
     }
 
@@ -224,6 +226,8 @@ class PlayerActivity : AppCompatActivity() {
             channelListFragment.hide()
         } else {
             channelListFragment.show()
+            // 显示列表时自动隐藏控制栏
+            hideControls()
         }
     }
 
@@ -240,33 +244,19 @@ class PlayerActivity : AppCompatActivity() {
         startControlsHideTimer()
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        event?.let {
-            gestureDetector.onTouchEvent(it)
-        }
-        return super.onTouchEvent(event)
-    }
-
     override fun onResume() {
         super.onResume()
-        // 确保播放器可用
-        if (::exoPlayer.isInitialized) {
-            exoPlayer.play()
-        }
+        exoPlayer.play()
     }
 
     override fun onPause() {
         super.onPause()
-        if (::exoPlayer.isInitialized) {
-            exoPlayer.pause()
-        }
+        exoPlayer.pause()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (::exoPlayer.isInitialized) {
-            exoPlayer.release()
-        }
+        exoPlayer.release()
         controlsHandler.removeCallbacksAndMessages(null)
     }
 
