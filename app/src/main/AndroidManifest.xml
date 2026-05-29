@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.iptv.player">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     
-    <!-- TV 启动器支持 -->
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
@@ -21,7 +19,6 @@
         android:usesCleartextTraffic="true"
         android:banner="@drawable/ic_launcher">
         
-        <!-- 主启动 Activity（手机/平板） -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -30,20 +27,12 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        
-        <!-- TV 启动 Activity -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
         
-        <!-- 播放 Activity -->
         <activity
             android:name=".PlayerActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
