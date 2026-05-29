@@ -20,10 +20,6 @@ class MainActivity : AppCompatActivity() {
     private var retryCount = 0
     private val MAX_RETRIES = 3
 
-    companion object {
-        private const val TAG = "MainActivity"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,19 +29,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadChannels() {
         progressBar.visibility = ProgressBar.VISIBLE
-        Log.i(TAG, "Loading channels, retry: $retryCount")
-
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val success = DataManager.loadChannels(this@MainActivity)
                 withContext(Dispatchers.Main) {
                     progressBar.visibility = ProgressBar.GONE
                     if (success && DataManager.allChannels.isNotEmpty()) {
-                        Log.i(TAG, "Loaded ${DataManager.allChannels.size} channels")
                         startActivity(Intent(this@MainActivity, PlayerActivity::class.java))
                         finish()
                     } else {
-                        Log.e(TAG, "Failed to load channels")
                         if (retryCount < MAX_RETRIES) {
                             retryCount++
                             Toast.makeText(
@@ -64,14 +56,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Error loading channels", e)
+                Log.e("MainActivity", "Error", e)
                 withContext(Dispatchers.Main) {
                     progressBar.visibility = ProgressBar.GONE
-                    Toast.makeText(
-                        this@MainActivity,
-                        "发生错误: ${e.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(this@MainActivity, "发生错误: ${e.message}", Toast.LENGTH_LONG).show()
                 }
             }
         }
