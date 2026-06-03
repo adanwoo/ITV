@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 589
-# Demo匹配成功: 402
-# 丢弃数量: 187
+# 原始频道总数: 592
+# Demo匹配成功: 406
+# 丢弃数量: 186
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -79,7 +79,6 @@ VOA美国之音 (1080p),https://voa-ingest.akamaized.net/hls/live/2033878/tvmc08
 Supreme Master TV,https://lbs-us1.suprememastertv.com/720p.m3u8
 六盘山红军长征景区,https://gcalic.v.myalicdn.com/gc/lpsgmjng01_1/index.m3u8
 春晚2024,https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8
-CGNT 新闻频道,https://english-livebkali.cgtn.com/live/encgtn_0.m3u8
 青岛崂山八水河,https://gcalic.v.myalicdn.com/gc/qdls02_1/index.m3u8
 Home Plus,https://homeplushls.wns.live/hls/stream.m3u8
 乌镇龙形田,https://gcalic.v.myalicdn.com/gc/zjwzlxt_1/index.m3u8
@@ -126,6 +125,7 @@ CHC电影,http://183.237.95.108:9901/tsfile/live/1008_1.m3u8?key=txiptv&playlive
 CHC家庭影院,http://61.162.52.6:8088/newlive/live/hls/60/live.m3u8
 倩女幽魂人间道,http://jsmov2.a.yximgs.com/bs3/video-hls/5250634317044855747_hlsb.m3u8
 黄花城水长城02,http://gctxyc.liveplay.myqcloud.com/gc/wgw02_1/index.m3u8
+1905电影网,http://8.138.7.223/tv/1905.php?id=LIVE8J4LTCXPI7QJ5
 CGNT 记录频道,https://english-livebkali.cgtn.com/live/doccgtn_0.m3u8
 Xinjiang TV 2,http://110.153.180.106:55555/out_3/index.m3u8
 玛纳斯,http://218.84.127.245:1026/hls/main1/playlist.m3u8?zxinjd
@@ -143,7 +143,6 @@ Beautiful Life TV,https://5ddce30eb4b55.streamlock.net/bltvhd/bltv1/playlist.m3u
 CCTV+ 2 (600p) [Not 24/7],https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL2.smil/playlist.m3u8
 Tonghua TV (1080p),http://lsfb.avap.jilintv.cn/zqvk7vpj/channel/43ea5771aa44421591f9dfd2b71f1b9b/index.m3u8
 Good,https://live.streamingfast.net/osmflivech1.m3u8
-1905电影网,http://8.138.7.223/tv/1905.php?id=LIVE8J4LTCXPI7QJ5
 泰山南天门,https://gcalic.v.myalicdn.com/gc/hkts07_1/index.m3u8
 Dali TV,http://www.dalitv.com.tw:4568/live/dali/index.m3u8
 RT Español（西语）,https://rt-esp.rttv.com/dvr/rtesp/playlist_4500Kb.m3u8
