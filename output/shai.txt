@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 593
-# Demo匹配成功: 409
-# 丢弃数量: 184
+# 原始频道总数: 583
+# Demo匹配成功: 400
+# 丢弃数量: 183
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -187,4 +187,3 @@ Guangzhou TV,https://tencentplaybusiness.gztv.com/live/zonghes.m3u8
 新昌休闲影视 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang2/720p.m3u8
 餘姚姚江文化 (576p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
 新昌新聞綜合 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
-美亚电影,http://iptv.4666888.xyz/iptv2A.php?id=30
