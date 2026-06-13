@@ -1,6 +1,6 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 600
-# Demo匹配成功: 415
+# 原始频道总数: 601
+# Demo匹配成功: 416
 # 丢弃数量: 185
 # 格式: 频道名,URL
 
@@ -55,7 +55,7 @@
 2001年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQyMDFfMF8z_b_B70592cb7c4054e9cabb675e849bbf4bd.mp4
 韩国电影2,https://stream.ads.ottera.tv/playlist.m3u8?network_id=743
 春晚1988,https://alimov2.a.kwimgs.com/upic/2022/01/31/16/BMjAyMjAxMzExNjAwMTJfNDAzMDAxOTlfNjYyNzMyNjkxNjBfMF8z_b_B8c835b83a92d25bde81ba22c5cd9521e.mp4
-CCTV-8K,http://198.204.240.250:82/live/cctv8k.m3u8
+CCTV-4K,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1781409600-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-41ee5d017cc737e521a4aec8bade9ce4&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 CH5,https://cdn6.163189.xyz/163189/ch5
 CH8,https://cdn6.163189.xyz/163189/ch8
 CHU,https://cdn6.163189.xyz/163189/chu
@@ -115,6 +115,7 @@ Wild Earth,https://wildearth-plex.amagi.tv/masterR1080p.m3u8
 CGTN Documentary (1080p),https://amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv/master.m3u8
 八里沟风景区桃花湾瀑布,https://gcalic.v.myalicdn.com/gc/blg05_1/index.m3u8
 Trace Sports,https://lightning-tracesport-samsungau.amagi.tv/playlist1080p.m3u8
+Angel TV Chinese (720p),https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8
 CHC电影,http://183.237.95.108:9901/tsfile/live/1008_1.m3u8?key=txiptv&playlive=0&authid=0
 倩女幽魂道道道,http://jsmov2.a.yximgs.com/bs3/video-hls/5216294367991385255_hlsb.m3u8
 萬州影視文藝 (576p) [Not 24/7],http://123.146.162.24:8017/d4ceB1a/1000/live.m3u8
@@ -188,4 +189,3 @@ Guangzhou TV,https://tencentplaybusiness.gztv.com/live/zonghes.m3u8
 新昌休闲影视 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang2/720p.m3u8
 餘姚姚江文化 (576p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
 新昌新聞綜合 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
-Angel TV Chinese (720p),https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8
