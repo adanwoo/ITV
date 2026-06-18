@@ -45,8 +45,8 @@ http://espanol-liveali.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8V
 http://russian-livews.cgtn.com/hls/LSvexABhNipibK5KRuUkvHZ7220802LSTeze9o8tdFXMHsb1VosgoT220802cd.m3u8
 #EXTINF:-1 tvg-id="2353" group-title="📺央视频道,",CGTN法语
 http://espanol-liveali.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8VZNBLE1ZNEa220802cd.m3u8
-#EXTINF:-1 tvg-logo="https://live.fanmingming.cn/tv/CGTN纪录.png" group-title="📺央视频道,",CGTN纪录
-https://english-livebkali.cgtn.com/live/doccgtn_0.m3u8
+#EXTINF:-1 tvg-logo="https://live.fanmingming.cn/tv/CGTN记录.png" group-title="📺央视频道,",CGTN纪录
+https://english-livetx.cgtn.com/hls/yypdjlctzb_hd.m3u8
 #EXTINF:-1 tvg-id="2355" group-title="📺央视频道,",CGTN西语
 http://espanol-liveali.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8VZNBLE1ZNEa220802cd.m3u8
 #EXTINF:-1 tvg-logo="https://live.fanmingming.cn/tv/CGTN英语.png" group-title="📺央视频道,",CGTN英语
@@ -233,13 +233,15 @@ http://r.jdshipin.com/LiYdg
 http://222.128.55.152:9080/live/dwq.m3u8
 #EXTINF:-1 tvg-id="2492" group-title="☘️广东频道,",广东民生
 http://183.11.239.36:808/hls/18/index.m3u8
+#EXTINF:-1 tvg-logo="https://live.fanmingming.cn/tv/广东珠江.png" group-title="☘️广东频道,",广东珠江
+http://r.jdshipin.com/sE5vO
 #EXTINF:-1 tvg-logo="https://live.fanmingming.cn/tv/广州新闻.png" group-title="☘️广东频道,",广州新闻
 http://tencentplay.gztv.com/live/xinwen.m3u8?txSecret=d2c2db0b598c02ec1b5623728434d367&txTime=18d57929bd3
 #EXTINF:-1 tvg-logo="https://live.fanmingming.cn/tv/广州竞赛.png" group-title="☘️广东频道,",广州竞赛
 http://8.138.7.223/tv/gzjs.m3u8
-#EXTINF:-1 tvg-id="2497" group-title="☘️广东频道,",河源公共
+#EXTINF:-1 tvg-logo="https://live.fanmingming.cn/tv/河源公共.png" group-title="☘️广东频道,",河源公共
 http://tmpstream.hyrtv.cn/hygg/sd/live.m3u8
-#EXTINF:-1 tvg-id="2498" group-title="☘️广东频道,",河源综合
+#EXTINF:-1 tvg-logo="https://live.fanmingming.cn/tv/河源综合.png" group-title="☘️广东频道,",河源综合
 http://tmpstream.hyrtv.cn/xwzh/sd/live.m3u8
 #EXTINF:-1 tvg-id="2500" group-title="☘️广东频道,",泰山白云亭悬崖
 https://gcalic.v.myalicdn.com/gc/hkts02_1/index.m3u8
