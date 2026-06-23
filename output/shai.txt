@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 596
+# 原始频道总数: 598
 # Demo匹配成功: 412
-# 丢弃数量: 184
+# 丢弃数量: 186
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -135,10 +135,12 @@ CCTV4K真4K,http://vip1.xinketongxun.fun:8082/tsfile/live/1026_1.m3u8
 靖江新闻綜合 (480p) [Not 24/7],http://visit.jjbctv.com:1935/live/xwzhmb/playlist.m3u8
 舒兰新闻,http://stream8.jlntv.cn/shulan/sd/live.m3u8?zjild
 WionNews,https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
+Good 2,https://live.streamingfast.net/osmflivech2.m3u8
 萧山综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan1/720p.m3u8
 Beautiful Life TV,https://5ddce30eb4b55.streamlock.net/bltvhd/bltv1/playlist.m3u8
 CCTV+ 2 (600p) [Not 24/7],https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL2.smil/playlist.m3u8
 Tonghua TV (1080p),http://lsfb.avap.jilintv.cn/zqvk7vpj/channel/43ea5771aa44421591f9dfd2b71f1b9b/index.m3u8
+Good,https://live.streamingfast.net/osmflivech1.m3u8
 泰山南天门,https://gcalic.v.myalicdn.com/gc/hkts07_1/index.m3u8
 Dali TV,http://www.dalitv.com.tw:4568/live/dali/index.m3u8
 RT Español（西语）,https://rt-esp.rttv.com/dvr/rtesp/playlist_4500Kb.m3u8
