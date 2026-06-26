@@ -1,6 +1,6 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 596
-# Demo匹配成功: 410
+# 原始频道总数: 597
+# Demo匹配成功: 411
 # 丢弃数量: 186
 # 格式: 频道名,URL
 
@@ -79,7 +79,6 @@ CGTN (720p),http://217.20.112.199:8080/cgtn/index.m3u8
 Supreme Master TV,https://lbs-us1.suprememastertv.com/720p.m3u8
 六盘山红军长征景区,https://gcalic.v.myalicdn.com/gc/lpsgmjng01_1/index.m3u8
 春晚2024,https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8
-CGNT 新闻频道,https://english-livebkali.cgtn.com/live/encgtn_0.m3u8
 青岛崂山八水河,https://gcalic.v.myalicdn.com/gc/qdls02_1/index.m3u8
 Home Plus,https://homeplushls.wns.live/hls/stream.m3u8
 乌镇龙形田,https://gcalic.v.myalicdn.com/gc/zjwzlxt_1/index.m3u8
@@ -112,6 +111,7 @@ Xinjiang TV 8,http://120.70.60.179:9901/tsfile/live/1002_1.m3u8?authid=0&key=txi
 1993年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/22/BMjAyMzAxMTMyMjEwMDNfNDAzMDAxOTlfOTM1MTIzMzYwODJfMF8z_b_B647d10e431b4cc5e48e6c77347d69021.mp4
 Wild Earth,https://wildearth-plex.amagi.tv/masterR1080p.m3u8
 数码时代,http://ali-m-l.cztv.com/channels/lantian/channel12/720p.m3u8?zzhed
+余杭未来E频道,http://l.cztvcloud.com/channels/lantian/SXyuhang3/720p.m3u8?zzhed
 CGTN Documentary (1080p),https://amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv/master.m3u8
 八里沟风景区桃花湾瀑布,https://gcalic.v.myalicdn.com/gc/blg05_1/index.m3u8
 Trace Sports,https://lightning-tracesport-samsungau.amagi.tv/playlist1080p.m3u8
