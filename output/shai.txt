@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 599
+# 原始频道总数: 597
 # Demo匹配成功: 413
-# 丢弃数量: 186
+# 丢弃数量: 184
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -78,7 +78,6 @@ CGTN (720p),http://217.20.112.199:8080/cgtn/index.m3u8
 青岛崂山双福,https://gcalic.v.myalicdn.com/gc/qdls03_1/index.m3u8
 Supreme Master TV,https://lbs-us1.suprememastertv.com/720p.m3u8
 六盘山红军长征景区,https://gcalic.v.myalicdn.com/gc/lpsgmjng01_1/index.m3u8
-春晚2024,https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8
 青岛崂山八水河,https://gcalic.v.myalicdn.com/gc/qdls02_1/index.m3u8
 Home Plus,https://homeplushls.wns.live/hls/stream.m3u8
 乌镇龙形田,https://gcalic.v.myalicdn.com/gc/zjwzlxt_1/index.m3u8
@@ -188,5 +187,4 @@ Guangzhou TV,https://tencentplaybusiness.gztv.com/live/zonghes.m3u8
 兵团五师双河影,https://liveout.btzx.com.cn/62ds9e/6o77s4.m3u8?zxinjd
 新昌休闲影视 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang2/720p.m3u8
 餘姚姚江文化 (576p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
-长影频道,http://tpc.x3322.net:9901/tsfile/live/1010_1.m3u8
 新昌新聞綜合 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
