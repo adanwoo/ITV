@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 597
-# Demo匹配成功: 411
-# 丢弃数量: 186
+# 原始频道总数: 584
+# Demo匹配成功: 404
+# 丢弃数量: 180
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -56,17 +56,10 @@
 韩国电影2,https://stream.ads.ottera.tv/playlist.m3u8?network_id=743
 春晚1988,https://alimov2.a.kwimgs.com/upic/2022/01/31/16/BMjAyMjAxMzExNjAwMTJfNDAzMDAxOTlfNjYyNzMyNjkxNjBfMF8z_b_B8c835b83a92d25bde81ba22c5cd9521e.mp4
 CCTV-8K,http://198.204.240.250:82/live/cctv8k.m3u8
-CH5,https://cdn6.163189.xyz/163189/ch5
-CH8,https://cdn6.163189.xyz/163189/ch8
-CHU,https://cdn6.163189.xyz/163189/chu
-NOW NEWS,http://cdn.163189.xyz/163189/now
-八度空间,https://cdn6.163189.xyz/163189/8tv
 韩国电影1,https://stream.ads.ottera.tv/playlist.m3u8?network_id=595
 ABN China (720p),https://mediaserver.abnvideos.com/streams/abnchina.m3u8
 Newsmax,http://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8
-亚洲武侠,http://php.jdshipin.com/TVOD/iptv.php?id=yzwx
 CNA,https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
-Astro AOD,http://php.jdshipin.com/TVOD/iptv.php?id=aod
 VOA美国之音 (1080p),https://voa-ingest.akamaized.net/hls/live/2033878/tvmc08/playlist.m3u8
 音乐欣赏,http://61.221.215.25:8800/hls/49/index.m3u8
 新闻咨询,http://112.46.105.20:8009/hls/18/index.m3u8
@@ -190,3 +183,4 @@ Guangzhou TV,https://tencentplaybusiness.gztv.com/live/zonghes.m3u8
 餘姚姚江文化 (576p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
 长影频道,http://tpc.x3322.net:9901/tsfile/live/1010_1.m3u8
 新昌新聞綜合 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
+美亚电影,http://zjrtv.vip/live/?tbs=mydy
