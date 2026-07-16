@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 607
-# Demo匹配成功: 419
-# 丢弃数量: 188
+# 原始频道总数: 609
+# Demo匹配成功: 420
+# 丢弃数量: 189
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -146,6 +146,7 @@ Good,https://live.streamingfast.net/osmflivech1.m3u8
 Dali TV,http://www.dalitv.com.tw:4568/live/dali/index.m3u8
 Xinjiang TV 1,https://p8.vzan.com/218800995/242196610130883766/live.m3u8?zbid=218800995&tpid=208366456
 RT Español（西语）,https://rt-esp.rttv.com/dvr/rtesp/playlist_4500Kb.m3u8
+RT Balkan （塞尔维亚语）,https://rt-srb.rttv.com/dvr/rtbalkan/playlist_4500Kb.m3u8
 黄果树六角亭瀑布,https://gcalic.v.myalicdn.com/gc/hgsspzxdpb_1/index.m3u8
 月牙泉,https://gcalic.v.myalicdn.com/gc/dhyyqsm_1/index.m3u8
 自然传奇,http://newcntv.qcloudcdn.com/asp/hls/1200/0303000a/3/default/81a1ad3a661748bfb8560c92d38204ca/1200.m3u8
