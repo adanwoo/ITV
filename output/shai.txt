@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 558
-# Demo匹配成功: 398
-# 丢弃数量: 160
+# 原始频道总数: 562
+# Demo匹配成功: 403
+# 丢弃数量: 159
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -89,6 +89,7 @@ Xinjiang TV 8,http://120.70.60.179:9901/tsfile/live/1002_1.m3u8?authid=0&key=txi
 1993年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/22/BMjAyMzAxMTMyMjEwMDNfNDAzMDAxOTlfOTM1MTIzMzYwODJfMF8z_b_B647d10e431b4cc5e48e6c77347d69021.mp4
 Wild Earth,https://wildearth-plex.amagi.tv/masterR1080p.m3u8
 数码时代,http://ali-m-l.cztv.com/channels/lantian/channel12/720p.m3u8?zzhed
+余杭未来E频道,http://l.cztvcloud.com/channels/lantian/SXyuhang3/720p.m3u8?zzhed
 CGTN Documentary (1080p),https://amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv/master.m3u8
 Trace Sports,https://lightning-tracesport-samsungau.amagi.tv/playlist1080p.m3u8
 Angel TV Chinese (720p),https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8
@@ -137,7 +138,6 @@ TV BRICS Chinese (1080p),https://chibrics.mediacdn.ru/cdn/brics/chinese/playlist
 Harbin Movie Channel,https://stream.hrbtv.net/yspd/playlist.m3u8
 BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 Harbin Comprehensive News Channel,https://stream.hrbtv.net/xwzh/playlist.m3u8?_upt=ef41dd531755913594
-NewTV武搏世界,http://1.94.31.214/php/hntv.php?id=wspd
 韩国EBS少儿,http://ebsonairios.ebs.co.kr/ebsutablet500k/tablet500k/playlist.m3u8
 Zhejiang TV International,https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8
 Siping TV,http://stream2.jlntv.cn/sptv/sd/live.m3u8?_upt=f27750421743154598
@@ -145,7 +145,6 @@ Hunan TV (2160p),http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAu
 飞碟之谜01,https://hls.cntv.lxdns.com/asp/hls/2000/0303000a/3/default/f0a47e155d32450daa1d36a04fd7d262/2000.m3u8
 兴隆综合,https://jwcdnqx.hebyun.com.cn/live/xlzh/1500k/tzwj_video.m3u8
 2024年春晚,https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8
-文物宝库,http://1.94.31.214/php/hntv.php?id=wwbk
 Nei Monggol TV 2 Mongolian Culture Channel (1080i) [Not 24/7],http://play1-qk.nmtv.cn/live/1769652109096027.m3u8
 Chifeng Comprehensive News Chanel,http://play1-qk.nmtv.cn/live/1735546697341033.m3u8
 武进生活 (576p) [Not 24/7],https://live.wjyanghu.com/live/CH2.m3u8
