@@ -1,6 +1,6 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 561
-# Demo匹配成功: 400
+# 原始频道总数: 564
+# Demo匹配成功: 403
 # 丢弃数量: 161
 # 格式: 频道名,URL
 
@@ -137,6 +137,7 @@ TV BRICS Chinese (1080p),https://chibrics.mediacdn.ru/cdn/brics/chinese/playlist
 Harbin Movie Channel,https://stream.hrbtv.net/yspd/playlist.m3u8
 BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 Harbin Comprehensive News Channel,https://stream.hrbtv.net/xwzh/playlist.m3u8?_upt=ef41dd531755913594
+春晚2026,https://v.lzcdn28.com/20260217/8616_1de9f6e5/index.m3u8
 NewTV武搏世界,http://1.94.31.214/php/hntv.php?id=wspd
 韩国EBS少儿,http://ebsonairios.ebs.co.kr/ebsutablet500k/tablet500k/playlist.m3u8
 Zhejiang TV International,https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8
@@ -163,5 +164,4 @@ Lanzhou Culture & Tourism Channel,https://liveplus.lzr.com.cn/wlpd/HD/live.m3u8
 Lanzhou Comprehensive News Channel,https://liveplus.lzr.com.cn/xwzh/HD/live.m3u8
 新昌休闲影视 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang2/720p.m3u8
 餘姚姚江文化 (576p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
-长影频道,http://tpc.x3322.net:9901/tsfile/live/1010_1.m3u8
 新昌新聞綜合 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
