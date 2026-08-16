@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 567
-# Demo匹配成功: 405
-# 丢弃数量: 162
+# 原始频道总数: 564
+# Demo匹配成功: 403
+# 丢弃数量: 161
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -72,7 +72,6 @@ China Travel (1080p),https://fastlive.cctvplus.com/out/v1/ca6f9297b7314a63959435
 萬州科教頻道 (576p),http://123.146.162.24:8017/Cz7WPb8/800/live.m3u8
 萬州綜合頻道 (576p),http://123.146.162.24:8017/iTXwrGs/800/live.m3u8
 Supreme Master TV,https://lbs-us1.suprememastertv.com/720p.m3u8
-CGNT 新闻频道,https://english-livebkali.cgtn.com/live/encgtn_0.m3u8
 CGTN French (1080p),http://145.239.5.177/214/index.m3u8
 春晚2024,https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8
 Home Plus,https://homeplushls.wns.live/hls/stream.m3u8
