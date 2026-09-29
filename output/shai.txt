@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 633
-# Demo匹配成功: 423
-# 丢弃数量: 210
+# 原始频道总数: 636
+# Demo匹配成功: 425
+# 丢弃数量: 211
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -79,7 +79,6 @@ CGTN Documentary (1080p),https://hlspackager.akamaized.net/live/DB/CGTN_DOCUMENT
 Supreme Master TV,https://lbs-us1.suprememastertv.com/720p.m3u8
 CGTN French (1080p),http://145.239.5.177/214/index.m3u8
 春晚2024,https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8
-黄花城水长城03,https://gcalic.v.myalicdn.com/gc/wgw03_1/index.m3u8
 黄山始信新道,https://gcalic.v.myalicdn.com/gc/hsyg_1/index.m3u8
 黄山排云亭,https://gcalic.v.myalicdn.com/gc/hspyt_1/index.m3u8
 直播中国精编直播,https://gcalic.v.myalicdn.com/gc/wgw05_1/index.m3u8
@@ -122,6 +121,7 @@ Wild Earth,https://wildearth-plex.amagi.tv/masterR1080p.m3u8
 八里沟风景区桃花湾瀑布,https://gcalic.v.myalicdn.com/gc/blg05_1/index.m3u8
 Chaozhou Public Channel,http://113.64.146.48:1688/hls/4/index.m3u8
 雪乡梦幻家园,https://gcalic.v.myalicdn.com/gc/mdjxxmhjyxj_1/index.m3u8
+余杭未来E频道,http://l.cztvcloud.com/channels/lantian/SXyuhang3/720p.m3u8?zzhed
 VoA TV China (1080p),https://voa-ingest.akamaized.net/hls/live/2033878/tvmc08/playlist.m3u8
 HomePlus,https://homeplushls.wns.live/hls/stream.m3u8
 Guangxi Variety & Travel Channel,http://111.59.24.227:8181/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -214,3 +214,4 @@ Lanzhou Comprehensive News Channel,https://liveplus.lzr.com.cn/xwzh/HD/live.m3u8
 餘姚姚江文化 (576p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
 长影频道,http://tpc.x3322.net:9901/tsfile/live/1010_1.m3u8
 新昌新聞綜合 (1080p) [Not 24/7],https://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8
+CGNT 记录频道,https://english-livebkali.cgtn.com/live/doccgtn_0.m3u8
