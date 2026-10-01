@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 631
-# Demo匹配成功: 420
-# 丢弃数量: 211
+# 原始频道总数: 633
+# Demo匹配成功: 426
+# 丢弃数量: 207
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -56,12 +56,8 @@
 韩国电影2,https://stream.ads.ottera.tv/playlist.m3u8?network_id=743
 春晚1988,https://alimov2.a.kwimgs.com/upic/2022/01/31/16/BMjAyMjAxMzExNjAwMTJfNDAzMDAxOTlfNjYyNzMyNjkxNjBfMF8z_b_B8c835b83a92d25bde81ba22c5cd9521e.mp4
 CCTV-8K,http://198.204.240.250:82/live/cctv8k.m3u8
-CH5,https://cdn6.163189.xyz/163189/ch5
-CH8,https://cdn6.163189.xyz/163189/ch8
 Guangdong Satellite TV,https://h5cul1yar48um3t.wcetv.com/hls/gdsatellite.m3u8
-CHU,https://cdn6.163189.xyz/163189/chu
 NOW NEWS,http://cdn.163189.xyz/163189/now
-八度空间,https://cdn6.163189.xyz/163189/8tv
 韩国电影1,https://stream.ads.ottera.tv/playlist.m3u8?network_id=595
 ABN China (720p),https://mediaserver.abnvideos.com/streams/abnchina.m3u8
 Newsmax,http://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8
