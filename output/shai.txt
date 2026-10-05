@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 629
+# 原始频道总数: 626
 # Demo匹配成功: 424
-# 丢弃数量: 205
+# 丢弃数量: 202
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -49,13 +49,13 @@
 2005年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQyMzhfMF8z_b_B35ad7cc86aec8fc9e5ddfb31fc7bed63.mp4
 春晚1989,https://alimov2.a.kwimgs.com/upic/2022/01/31/16/BMjAyMjAxMzExNjAwMTVfNDAzMDAxOTlfNjYyNzMyNzQ2OTlfMF8z_b_Be477b27b9ce655d2372df56a5a3d96ef.mp4
 春晚1999,https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQxNTRfMF8z_b_B0b5e52bc003285ef66ec0cbb2be08556.mp4
-CCTV-4K,https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4k_mbd.m3u8?auth_key=1791180000-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-d1fac7c836baf910d40a146af01edb8d&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c
 1988年春晚,https://txmov2.a.kwimgs.com/bs3/video-hls/5216575810935394655_hlsb.m3u8
 1989年春晚,https://txmov2.a.kwimgs.com/bs3/video-hls/5194620763762726260_hlsb.m3u8
 2000年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxMTNfMF8z_b_Bdddf4e7ef0ff6cfd477857bb40e78419.mp4
 2001年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQyMDFfMF8z_b_B70592cb7c4054e9cabb675e849bbf4bd.mp4
 韩国电影2,https://stream.ads.ottera.tv/playlist.m3u8?network_id=743
 春晚1988,https://alimov2.a.kwimgs.com/upic/2022/01/31/16/BMjAyMjAxMzExNjAwMTJfNDAzMDAxOTlfNjYyNzMyNjkxNjBfMF8z_b_B8c835b83a92d25bde81ba22c5cd9521e.mp4
+CCTV-8K,http://198.204.240.250:82/live/cctv8k.m3u8
 Guangdong Satellite TV,https://h5cul1yar48um3t.wcetv.com/hls/gdsatellite.m3u8
 NOW NEWS,http://cdn.163189.xyz/163189/now
 韩国电影1,https://stream.ads.ottera.tv/playlist.m3u8?network_id=595
@@ -83,7 +83,6 @@ CGTN French (1080p),http://145.239.5.177/214/index.m3u8
 乌镇龙形田,https://gcalic.v.myalicdn.com/gc/zjwzlxt_1/index.m3u8
 黄花城水长城01,https://gcalic.v.myalicdn.com/gc/wgw01_1/index.m3u8
 1987年春晚,https://txmov2.a.kwimgs.com/bs3/video-hls/5195746663405928031_hlsb.m3u8
-经典电影,https://txmov2.a.kwimgs.com/bs3/video-hls/5211790793651941963_hlsb.m3u8
 八里沟风景区天界山玻璃栈道,https://gcalic.v.myalicdn.com/gc/blg03_1/index.m3u8
 五彩池,https://gcalic.v.myalicdn.com/gc/hlwcc_1/index.m3u8
 六盘山红军长征景区,https://gcalic.v.myalicdn.com/gc/lpsgmjng01_1/index.m3u8
@@ -148,7 +147,6 @@ RT DE（德语）,https://rt-ger.rttv.com/dvr/rtdeutsch/playlist_4500Kb.m3u8
 靖江新闻綜合 (480p) [Not 24/7],http://visit.jjbctv.com:1935/live/xwzhmb/playlist.m3u8
 舒兰新闻,http://stream8.jlntv.cn/shulan/sd/live.m3u8?zjild
 WionNews,https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
-Good 2,https://live.streamingfast.net/osmflivech2.m3u8
 萧山综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan1/720p.m3u8
 Bread TV (720p),https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
 Beautiful Life TV,https://5ddce30eb4b55.streamlock.net/bltvhd/bltv1/playlist.m3u8
@@ -156,12 +154,12 @@ CCTV+ 2 (600p) [Not 24/7],https://cd-live-stream.news.cctvplus.com/live/smil:CHA
 Chuxiong News Channel [Not 24/7],http://hwapi.yntv.net/ew265l/848y54.m3u8
 魅力足球,http://t.061899.xyz/tl/tl.php?id=mlzq
 Tonghua TV (1080p),http://lsfb.avap.jilintv.cn/zqvk7vpj/channel/43ea5771aa44421591f9dfd2b71f1b9b/index.m3u8
-Good,https://live.streamingfast.net/osmflivech1.m3u8
 Dali TV,http://www.dalitv.com.tw:4568/live/dali/index.m3u8
 RT Español（西语）,https://rt-esp.rttv.com/dvr/rtesp/playlist_4500Kb.m3u8
 RT Balkan （塞尔维亚语）,https://rt-srb.rttv.com/dvr/rtbalkan/playlist_4500Kb.m3u8
 乐游,http://t.061899.xyz/tl/tl.php?id=ly
 发现之旅,http://t.061899.xyz/tl/tl.php?id=fxzl
+1905电影网,http://8.138.7.223/tv/1905.php?id=LIVE8J4LTCXPI7QJ5
 RT Arabic（阿语）,https://rt-arb.rttv.com/dvr/rtarab/playlist_4500Kb.m3u8
 Pet Club TV,https://cdn-apse1-prod.tsv2.amagi.tv/linear/amg01076-lightningintern-petclub-samsungnz/playlist.m3u8
 文化精品,https://live.264788.xyz/channel/yangshiwenhuajingpin?streamid=bc185d1ef1e528922e83efd845006277&livekey=01WgOR41rriMmMkzNsd0UoaxJRwetZdxIvtVk
@@ -187,7 +185,6 @@ CCTV-4美洲,http://t.061899.xyz/tl/tl.php?id=cctv4m
 Zhejiang TV International,https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8
 Siping TV,http://stream2.jlntv.cn/sptv/sd/live.m3u8?_upt=f27750421743154598
 Hunan TV (2160p),http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
-飞碟之谜01,https://hls.cntv.lxdns.com/asp/hls/2000/0303000a/3/default/f0a47e155d32450daa1d36a04fd7d262/2000.m3u8
 兴隆综合,https://jwcdnqx.hebyun.com.cn/live/xlzh/1500k/tzwj_video.m3u8
 2024年春晚,https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8
 Nei Monggol TV 2 Mongolian Culture Channel (1080i) [Not 24/7],http://play1-qk.nmtv.cn/live/1769652109096027.m3u8
