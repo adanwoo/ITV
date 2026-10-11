@@ -1,7 +1,7 @@
 # Demo筛选丢弃的频道
-# 原始频道总数: 629
-# Demo匹配成功: 424
-# 丢弃数量: 205
+# 原始频道总数: 637
+# Demo匹配成功: 430
+# 丢弃数量: 207
 # 格式: 频道名,URL
 
 2002年春晚,https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4
@@ -139,6 +139,7 @@ CHC家庭影院,http://t.061899.xyz/tl/tl.php?id=chcjtdy
 Xinjiang TV 2,http://110.153.180.106:55555/out_3/index.m3u8
 玛纳斯,http://218.84.127.245:1026/hls/main1/playlist.m3u8?zxinjd
 CCTV+ 1 (600p) [Not 24/7],https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8
+RT Documentary（英语纪录）,https://rt-rtd.rttv.com/dvr/rtdoc/playlist_4500Kb.m3u8
 Anhui TV,https://restream.pdtvhd.com/memfs/c1cd2ed0-3b2b-4c25-af98-a7fb0b1eb130.m3u8
 CHC动作电影,http://t.061899.xyz/tl/tl.php?id=chcdzdy
 RT Doc-Русский（俄语纪录）,https://rt-doc.rttv.com/dvr/rtdru/rtdru1080.m3u8
@@ -180,6 +181,7 @@ BRTV 北京卫视 (1080p),http://go.bkpcp.top/mg/bjws
 Harbin Comprehensive News Channel,https://stream.hrbtv.net/xwzh/playlist.m3u8?_upt=ef41dd531755913594
 丽江古城大水车,https://gcalic.v.myalicdn.com/gc/ljgcdsc_1/index.m3u8
 韩国EBS少儿,http://ebsonairios.ebs.co.kr/ebsutablet500k/tablet500k/playlist.m3u8
+CCTV-4欧洲,http://t.061899.xyz/tl/tl.php?id=cctv4o
 CCTV-4美洲,http://t.061899.xyz/tl/tl.php?id=cctv4m
 劲爆体育,http://t.061899.xyz/tl/tl.php?id=jbty
 Zhejiang TV International,https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8
